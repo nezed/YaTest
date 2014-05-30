@@ -31,7 +31,7 @@ sorter.addTickets( [
 		transport: {
 			type: 'train',
 			voyage: '78a',
-			seat: '75b'
+			seat: '45b'
 		}
 	},
 	
@@ -39,7 +39,7 @@ sorter.addTickets( [
 		start: {
 			city: 'Barcelona',
 			place: 'airport',
-			name: 'Girona airport'
+			name: 'Girona Airport'
 		},
 		finish: {
 			city: 'Stockholm',
@@ -66,6 +66,7 @@ sorter.addTickets( [
 		},
 		transport: {
 			type: 'bus',
+			name: 'airport bus',
 			comment: 'No seat assigment'
 		}
 	}
