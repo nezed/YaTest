@@ -13,8 +13,7 @@ sorter.addTickets( [
 			type: 'train',
 			voyage: '78a',
 			seat: '75b'
-		},
-		comment: ''
+		}
 	},
 	
 	{
@@ -23,16 +22,51 @@ sorter.addTickets( [
 			place: 'airport'
 		},
 		finish: {
-			// JFK? WTF?
 			city: 'New York',
+			place: 'airport',
+			name: 'New York JFK'
+		},
+		transport: {
+			type: 'flight',
+			voyage: 'SK22',
+			gate: 22,
+			seat: '7b',
+			comment: 'Baggage will be automatically transferred from your last leg.'
+		}
+	},
+
+	{
+		start: {
+			city: 'Barcelona',
+			place: 'airport',
+			name: 'Girona airport'
+		},
+		finish: {
+			city: 'Stockholm',
 			place: 'airport'
 		},
 		transport: {
 			type: 'flight',
-			voyage: 'SJ22',
-			gate: 22,
-			seat: '78b',
-			comment: 'Baggage will be automatically transferred from your last leg.'
+			voyage: 'sk455',
+			gate: '45b',
+			seat: '3a',
+			comment: 'Baggage drop at ticket counter 344'
+		}
+	},
+
+	{
+		start: {
+			city: 'Barcelona',
+			place: 'train station'
+		},
+		finish: {
+			city: 'Barcelona',
+			place: 'airport',
+			name: 'Girona Airport'
+		},
+		transport: {
+			type: 'bus',
+			comment: 'No seat assigment'
 		}
 	}
 ] );
