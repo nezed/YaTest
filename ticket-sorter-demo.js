@@ -95,7 +95,23 @@ sorter.addTickets( [
  */
 sorter.addTickets( {
 	finish: {
-		city: 'Moscow'
+		city: 'SPb'
+	},
+	start: {
+		city: "New York",
+		place: "seafront",
+		name: "seafront"
+	},
+	transport: {
+		type: 'boat',
+		comment: 'Be careful with shark`s ;-)'
+	}
+});
+sorter.addTickets( {
+	finish: {
+		city: "New York",
+		place: "seafront",
+		name: "seafront"
 	},
 	start: {
 		city: "New York",
@@ -103,7 +119,12 @@ sorter.addTickets( {
 		place: "airport"
 	},
 	transport: {
-		type: 'boat',
-		seat: 1
+		type: 'bike'
 	}
 });
+
+
+function update() {
+		document.getElementById('tickets').innerHTML = '<li>' + sorter.humanize().join( '</li><li>' ) + '</li>';
+}
+window.onload = update;
