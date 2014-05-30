@@ -80,7 +80,7 @@ function Explorer() {
 		/**
 		 * Validator
 		 */
-		if( !new_tickets.start.city || !new_tickets.finish.city || !new_tickets.transposrt.type )
+		if( !new_tickets.start.city || !new_tickets.finish.city || !new_tickets.transport.type )
 				return;
 
 		/*
