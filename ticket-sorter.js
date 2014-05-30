@@ -68,7 +68,35 @@ function Explorer() {
 	}
 	
 	this.humanize = function() {
-		
+		if( !tickets_sorted ) {
+			sort();
+		}
+		var instructions = [];
+		for( var i = 0, l = tickets.length; i < l; i++ ) {
+			var instruct = '',
+			tic = tickets[i];
+
+			if( tic.transport.type === 'flight' ) {
+				instruct = 'From ' + ( tic.start.name || tic.start.city ) + ', take flight ' + tic.transport.voyage.toString().toUpperCase();
+			} else {
+				instruct = 'Take ' + ( !tic.transport.voyage ? 'the ' : '' ) + tic.transport.type + ' ' + 
+						(tic.transport.voyage ? tic.transport.voyage.toString().toUpperCase() + ' ' : '') +
+						'from ' + ( tic.start.name || tic.start.city );
+			}
+			instruct += ' to ' + ( tic.finish.name || tic.finish.city ) + '.';
+			if( tic.transport.gate ) {
+				instruct += ' Gate ' + tic.transport.gate.toString().toUpperCase() + '.';
+			}
+			if( tic.transport.seat ) {
+				instruct += ' Seat ' + tic.transport.seat.toString().toUpperCase() + '.';
+			}
+			if( tic.transport.comment ) {
+				instruct += ' ' + tic.transport.comment.toString().replace(/^\s+|\s*\.?\s*$/g, '') + '.';
+			}
+
+			instructions.push( instruct );
+		}
+		return instructions;
 	}
 }
 
