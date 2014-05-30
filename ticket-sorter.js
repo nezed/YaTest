@@ -5,11 +5,11 @@ function Explorer() {
 	}
 	var tickets = [];
 	
-	this.addTickets( new_tickets ) {
+	this.addTickets = function( new_tickets ) {
 		if( !(new_tickets instanceof Array) ) {
 			new_tickets = [new_tickets];
 		}
-		tickets.push.apply(this, new_tickets);
+		tickets.push.apply(tickets, new_tickets);
 	}
 	
 	this.way = function() {
