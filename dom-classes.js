@@ -1,4 +1,4 @@
-//"use strict";
+"use strict";
 (function(){
 		var clean = function( className ) {
 				return className.replace(/\s{2,}/g, ' ').trim();
