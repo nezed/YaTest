@@ -70,3 +70,18 @@ sorter.addTickets( [
 		}
 	}
 ] );
+
+sorter.addTickets( {
+	finish: {
+		city: 'Moscow'
+	},
+	start: {
+		city: "New York",
+		name: "New York JFK",
+		place: "airport"
+	},
+	transport: {
+		type: 'boat',
+		seat: 1
+	}
+});

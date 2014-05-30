@@ -2,56 +2,62 @@
 
 function Explorer() {
 	var tickets_sorted = false,
-	is_next_ticket = function( a, b) {
-		if(
-			( a.finish.city == b.start.city ) &&
-			( a.finish.place == b.start.place ) &&
-			( (!a.finish.name) || ( a.finish.name.toLowerCase() == b.start.name.toLowerCase() ) )
-		) {
-			return true;
-		}
-		return false;
-	},
+	tickets = [],
+	places = [],
 	sort = function() {
-
-		var breaks = 2;
-		while( breaks > 1 )
-		for( var i = 0, l = tickets.length; i < l; i++ ) {
-			breaks = 0;
-			for( var j = i+2; j < l; j++ ) {
-				if( is_next_ticket( tickets[i], tickets[j]) ) {
-					var a = tickets[j];
-					tickets[j] = tickets[i+1];
-					tickets[i+1] = a;
-					break;
-				} else if( is_next_ticket( tickets[i+1], tickets[i] ) ) {
-					var a = tickets[i+1];
-					tickets[i+1] = tickets[i];
-					tickets[i] = a;
-					break;
-				}
-			}
-			if( i < l-1 && !is_next_ticket( tickets[i], tickets[i+1] ) ) {
-				breaks++;
-				console.log( breaks );
+		var cursor;
+		// Единственная вершина графа без предыдущей ей точки - начало
+		// Находим и ставим курсор
+		for( var i = 0, l = places.length; i < l; i++ ) {
+			if( !places[i].hasOwnProperty('prev') ) {
+				cursor = places[i];
+				break;
 			}
 		}
-		
-		while( is_next_ticket( tickets[ l-1 ], tickets[0] ) ) {
-			tickets.push( tickets.shift() );
+		// Отсортированный список билетов
+		var _tickets = [];
+		// Движемся по графу, пока курсор не дойдет до конца
+		while( cursor.next ) {
+			_tickets.push( cursor.start );
+			cursor = cursor.next;
 		}
+		return tickets = _tickets;
 	},
-	tickets = [];
-		this.is_next_ticket = is_next_ticket;
+	choose_place = function( info ) {
+		var place = null;
+		for( var i = 0, l = places.length; i < l; i++ ) {
+			if( info.city.toLowerCase() === places[i].city.toLowerCase() && info.place.toLowerCase() === places[i].place.toLowerCase() && (info.name + '' ).toLowerCase() === (places[i].name + '').toLowerCase() ) {
+				return places[i];
+			}
+		}
+		return places[ (places.push( info ) - 1) ];
+	};
 	
 	this.addTickets = function( new_tickets ) {
 		/*
 		 * TODO Validator
 		 */
-		if( !(new_tickets instanceof Array) ) {
-			new_tickets = [new_tickets];
+		if( new_tickets instanceof Array ) {
+			return new_tickets.forEach( this.addTickets);
 		}
-		tickets.push.apply(tickets, new_tickets);
+
+		/*
+		 * Создаем вершины графов и связываем их друг с другом
+		 */
+		var start_point = choose_place( new_tickets.start );
+		var finish_point = choose_place( new_tickets.finish );
+
+		new_tickets.start = start_point;
+		new_tickets.finish = finish_point;
+
+		start_point.next = finish_point;
+		finish_point.prev = start_point;
+
+		tickets.push(new_tickets);
+
+		start_point.start = tickets[ tickets.length - 1 ];
+		if( start_point.prev )
+			start_point.prev.finish = start_point.start;
 	}
 	
 	this.way = function() {
