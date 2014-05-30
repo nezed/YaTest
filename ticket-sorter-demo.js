@@ -2,22 +2,6 @@ var sorter = new Explorer();
 sorter.addTickets( [
 	{
 		start: {
-			city: 'Madrid',
-			place: 'train station'
-		},
-		finish: {
-			city: 'Barcelona',
-			place: 'train station'
-		},
-		transport: {
-			type: 'train',
-			voyage: '78a',
-			seat: '75b'
-		}
-	},
-	
-	{
-		start: {
 			city: 'Stockholm',
 			place: 'airport'
 		},
@@ -35,6 +19,22 @@ sorter.addTickets( [
 		}
 	},
 
+	{
+		start: {
+			city: 'Madrid',
+			place: 'train station'
+		},
+		finish: {
+			city: 'Barcelona',
+			place: 'train station'
+		},
+		transport: {
+			type: 'train',
+			voyage: '78a',
+			seat: '75b'
+		}
+	},
+	
 	{
 		start: {
 			city: 'Barcelona',
