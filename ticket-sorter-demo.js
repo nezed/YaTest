@@ -1,20 +1,39 @@
+/**
+ * Создание экземпляра сортировщика
+ * @type Explorer
+ */
 var sorter = new Explorer();
+/**
+ * Передаем в экземпляр билеты
+ * @param {Explorer.tickets} param
+ */
 sorter.addTickets( [
 	{
+		// Описание точки отправления
 		start: {
+			// Город отправления
 			city: 'Stockholm',
+			// Пункт отправления
 			place: 'airport'
 		},
+		// Описание точки прибытия
 		finish: {
 			city: 'New York',
 			place: 'airport',
+			// Уникальное название пункта
 			name: 'New York JFK'
 		},
+		// Описание транспорта
 		transport: {
+			// Типа транспорта
 			type: 'flight',
+			// Рейс
 			voyage: 'SK22',
+			// Платформа
 			gate: 22,
+			// Место
 			seat: '7b',
+			// Дополительное описание, предупреждения, дополнительный услуги
 			comment: 'Baggage will be automatically transferred from your last leg.'
 		}
 	},
@@ -71,7 +90,9 @@ sorter.addTickets( [
 		}
 	}
 ] );
-
+/**
+ * Просто почему бы не попробовать? =)
+ */
 sorter.addTickets( {
 	finish: {
 		city: 'Moscow'
