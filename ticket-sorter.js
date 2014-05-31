@@ -101,6 +101,9 @@ function Explorer() {
 		start_point.start = tickets[ tickets.length - 1 ];
 		if( start_point.prev )
 			start_point.prev.finish = start_point.start;
+
+		// Говорим что при чтении списка билетов потребуется их сортировка
+		tickets_sorted = false;
 	};
 	/**
 	 * Возвращает список объектов билетов
