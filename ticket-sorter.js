@@ -137,7 +137,7 @@ function Explorer() {
 			if( tic.transport.type === 'flight' ) {
 				instruct = 'From ' + ( tic.start.name || tic.start.city ) + ', take flight ' + tic.transport.voyage.toString().toUpperCase();
 			} else {
-				instruct = 'Take ' + ( !tic.transport.voyage ? 'the ' : '' ) + tic.transport.type + ' ' + 
+				instruct = 'Take ' + ( !tic.transport.voyage ? 'the ' : '' ) + ( tic.transport.name || tic.transport.type ) + ' ' + 
 						(tic.transport.voyage ? tic.transport.voyage.toString().toUpperCase() + ' ' : '') +
 						'from ' + ( tic.start.name || tic.start.city );
 			}
